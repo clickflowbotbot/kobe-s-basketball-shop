@@ -34,6 +34,7 @@ nav {
     padding: 15px 0;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     z-index: 1000;
+    transition: padding 0.3s ease;
 }
 
 .nav-content {
@@ -97,11 +98,9 @@ nav {
 #hero::before, #cta-banner::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 0;
 }
 
 .hero-content {
@@ -131,6 +130,11 @@ nav {
     text-decoration: none;
     border-radius: 4px;
     display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #c12a35;
 }
 
 /* Trust Bar */
@@ -178,6 +182,7 @@ nav {
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s;
+    height: 100%;
 }
 
 .service-card:hover {
@@ -209,6 +214,7 @@ nav {
 .about-text {
     flex: 1;
     min-width: 300px;
+    text-align: left;
 }
 
 /* Testimonials */
@@ -273,6 +279,7 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 40px;
     margin-bottom: 40px;
+    text-align: left;
 }
 
 .footer-bottom {
@@ -311,6 +318,56 @@ footer {
         padding: 20px;
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     }
+    #hero {
+        min-height: 70vh !important;
+    }
+    #cta-banner {
+        min-height: 50vh !important;
+    }
+    .about-text {
+        text-align: center;
+    }
+}
+
+/* Guardrail Styles */
+html, body { 
+    margin: 0; 
+    padding: 0; 
+}
+section { 
+    margin: 0; 
+}
+#hero, #cta-banner {
+    background-repeat: no-repeat;
+    background-attachment: scroll !important;
+    position: relative;
+}
+#hero {
+    background-size: cover;
+}
+#cta-banner {
+    background-size: cover;
+}
+#hero > *, #cta-banner > * { 
+    position: relative; 
+    z-index: 1; 
+}
+#hero, #cta-banner { 
+    color: #ffffff; 
+}
+#hero *, #cta-banner * { 
+    color: inherit; 
+}
+#hero a, #cta-banner a, #hero button, #cta-banner button { 
+    color: inherit; 
+}
+section { 
+    text-align: center; 
+}
+section > * { 
+    margin-left: auto; 
+    margin-right: auto; 
+    max-width: 1200px; 
 }
 
 /* ══ Guardrail: flush sections, background-image sizing ══ */
@@ -323,23 +380,9 @@ section, header, footer, nav { margin: 0; }
   background-repeat: no-repeat;
   background-attachment: scroll !important;
   margin: 0;
-  position: relative;
 }
 #hero { min-height: 100vh; }
 #cta-banner { min-height: 60vh; }
-/* Enforce readable overlay on background-image sections */
-#hero::before, #cta-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  z-index: 0;
-  pointer-events: none;
-}
-#hero > *, #cta-banner > * { position: relative; z-index: 1; }
-#hero, #cta-banner { color: #ffffff; }
-#hero *, #cta-banner * { color: inherit; }
-#hero a, #cta-banner a, #hero button, #cta-banner button { color: inherit; }
 @media (max-width: 767px) {
   #hero { min-height: 70vh !important; }
   #cta-banner { min-height: 50vh !important; }
